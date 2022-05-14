@@ -13,6 +13,11 @@
 		617EC75F282AECFA00D8B4F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 617EC75E282AECFA00D8B4F6 /* Preview Assets.xcassets */; };
 		617EC761282AECFA00D8B4F6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC760282AECFA00D8B4F6 /* Persistence.swift */; };
 		617EC764282AECFA00D8B4F6 /* SmogApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 617EC762282AECFA00D8B4F6 /* SmogApp.xcdatamodeld */; };
+		617EC76B282AED3500D8B4F6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC76A282AED3500D8B4F6 /* LocationManager.swift */; };
+		617EC76E282AEDC700D8B4F6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC76D282AEDC700D8B4F6 /* HomeView.swift */; };
+		617EC772282AF86500D8B4F6 /* ApiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC771282AF86500D8B4F6 /* ApiViewModel.swift */; };
+		617EC777282AFA0C00D8B4F6 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC776282AFA0C00D8B4F6 /* Sensor.swift */; };
+		618C36A2282D81DC00A96935 /* SensorDataValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C36A1282D81DC00A96935 /* SensorDataValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,12 @@
 		617EC75E282AECFA00D8B4F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		617EC760282AECFA00D8B4F6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		617EC763282AECFA00D8B4F6 /* SmogApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmogApp.xcdatamodel; sourceTree = "<group>"; };
+		617EC76A282AED3500D8B4F6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		617EC76D282AEDC700D8B4F6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		617EC76F282AEE4200D8B4F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		617EC771282AF86500D8B4F6 /* ApiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewModel.swift; sourceTree = "<group>"; };
+		617EC776282AFA0C00D8B4F6 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		618C36A1282D81DC00A96935 /* SensorDataValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +66,16 @@
 		617EC756282AECF900D8B4F6 /* SmogApp */ = {
 			isa = PBXGroup;
 			children = (
+				617EC773282AF9B000D8B4F6 /* Models */,
+				617EC770282AF84000D8B4F6 /* ViewModel */,
+				617EC76F282AEE4200D8B4F6 /* Info.plist */,
+				617EC76C282AED7300D8B4F6 /* View */,
 				617EC757282AECF900D8B4F6 /* SmogAppApp.swift */,
-				617EC759282AECF900D8B4F6 /* ContentView.swift */,
 				617EC75B282AECFA00D8B4F6 /* Assets.xcassets */,
 				617EC760282AECFA00D8B4F6 /* Persistence.swift */,
 				617EC762282AECFA00D8B4F6 /* SmogApp.xcdatamodeld */,
 				617EC75D282AECFA00D8B4F6 /* Preview Content */,
+				617EC76A282AED3500D8B4F6 /* LocationManager.swift */,
 			);
 			path = SmogApp;
 			sourceTree = "<group>";
@@ -71,6 +86,32 @@
 				617EC75E282AECFA00D8B4F6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		617EC76C282AED7300D8B4F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				617EC759282AECF900D8B4F6 /* ContentView.swift */,
+				617EC76D282AEDC700D8B4F6 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		617EC770282AF84000D8B4F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				617EC771282AF86500D8B4F6 /* ApiViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		617EC773282AF9B000D8B4F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				617EC776282AFA0C00D8B4F6 /* Sensor.swift */,
+				618C36A1282D81DC00A96935 /* SensorDataValue.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617EC772282AF86500D8B4F6 /* ApiViewModel.swift in Sources */,
+				617EC777282AFA0C00D8B4F6 /* Sensor.swift in Sources */,
 				617EC761282AECFA00D8B4F6 /* Persistence.swift in Sources */,
 				617EC75A282AECF900D8B4F6 /* ContentView.swift in Sources */,
+				617EC76B282AED3500D8B4F6 /* LocationManager.swift in Sources */,
+				618C36A2282D81DC00A96935 /* SensorDataValue.swift in Sources */,
+				617EC76E282AEDC700D8B4F6 /* HomeView.swift in Sources */,
 				617EC758282AECF900D8B4F6 /* SmogAppApp.swift in Sources */,
 				617EC764282AECFA00D8B4F6 /* SmogApp.xcdatamodeld in Sources */,
 			);
@@ -277,6 +323,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SmogApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmogApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Daj GPS-a";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,6 +353,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SmogApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmogApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Daj GPS-a";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
