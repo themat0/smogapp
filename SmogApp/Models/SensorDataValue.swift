@@ -14,7 +14,6 @@ struct SensorDataValue: Codable, Identifiable {
 }
 
 struct SensorData: Codable {
-    var P0: [String?]
-    var P1: [String?]
-    var P2: [String?]
+    var P1: [Double]
+    var P2: [Double]
 }

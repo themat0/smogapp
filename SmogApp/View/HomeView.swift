@@ -9,6 +9,7 @@ import SwiftUI
 import CoreLocation
 
 struct HomeView: View {
+    var locs: [String?] = []
     @StateObject var locationManager = LocationManager()
     @StateObject var vm = ApiViewModel()
     var userLatitude: String {
@@ -26,31 +27,31 @@ struct HomeView: View {
                 Text("latitude: \(userLatitude)")
                 Text("longitude: \(userLongitude)")
             }
-            ForEach(vm.results){ item in
-                //Text(GeotoAdd(item: item))
+            List(vm.results){ item in
+                Group{
+                    HStack{
+                        VStack {
+                            Text("PM2.5: \(avg(item: item.sensordatavalues.P2))")
+                            Text("PM10: \(avg(item: item.sensordatavalues.P1))")
+                        }
+                        Text(item.address)
+                    }
+                }
             }
         }.task {
             let coordinates = "\(userLatitude),\(userLongitude)"
             await vm.fetch(coordinates: coordinates)
             print(vm.results)
-            for i in vm.results{
-                GeotoAdd(item: i)
-            }
         }
     }
     
-    func GeotoAdd(item: SensorSort) {
-        let address = CLGeocoder.init()
-        var readressLabel: String = ""
-        address.reverseGeocodeLocation(CLLocation.init(latitude: Double(item.location.latitude) ?? 0, longitude: Double(item.location.longitude) ?? 0)) { (places, error) in
-            if error == nil{
-                if let place = places{
-                    let placeMark = place.last
-                    print("\(String(describing: placeMark!.thoroughfare) )\n\(String(describing: placeMark!.postalCode)) \(String(describing: placeMark!.locality))\n\(String(describing: placeMark!.country))")
-                    
-                }
-            }
+    func avg(item:[Double]) -> String{
+        var sum = 0.0
+        for i in item{
+            sum += i
         }
+        let result = sum / Double(item.count)
+        return String(Double(round(100 * result) / 100))
     }
 }
 struct HomeView_Previews: PreviewProvider {

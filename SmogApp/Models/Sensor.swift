@@ -18,6 +18,7 @@ struct SensorSort: Codable, Identifiable {
     //let sensorID: Int32
     let id = UUID()
     let location: Coordinates
+    let address: String
     var sensordatavalues: SensorData
 }
 
