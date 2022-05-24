@@ -15,7 +15,10 @@ struct HomeView: View {
     var userLatitude: String {
         return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
     }
-    
+    let distance: Int
+    init(distance: Int){
+        self.distance = distance
+    }
     var userLongitude: String {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
@@ -39,8 +42,9 @@ struct HomeView: View {
             }.navigationBarTitle("Smog App", displayMode: .automatic)
         }.task {
             let coordinates = CLLocation(latitude: Double(userLatitude) ?? 0.0, longitude: Double(userLongitude) ?? 0.0)
-            await vm.fetch(coordinates: coordinates)
-        }
+            await vm.fetch(coordinates: coordinates, distance: distance)
+        }.navigationBarTitle("")
+            .navigationBarHidden(true)
     }
     
     func getAddres(item: Address?) -> String{
@@ -75,7 +79,8 @@ struct HomeView: View {
     }
 }
 struct HomeView_Previews: PreviewProvider {
+    static let disctance = 0
     static var previews: some View {
-        HomeView()
+        HomeView(distance: disctance)
     }
 }

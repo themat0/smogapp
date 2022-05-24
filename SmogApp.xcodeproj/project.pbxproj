@@ -20,6 +20,7 @@
 		618C36A2282D81DC00A96935 /* SensorDataValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C36A1282D81DC00A96935 /* SensorDataValue.swift */; };
 		61FBF642283D04420028C5CE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBF641283D04420028C5CE /* SettingsView.swift */; };
 		61FBF644283D0FE90028C5CE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBF643283D0FE90028C5CE /* DetailsView.swift */; };
+		61FBF646283D21790028C5CE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBF645283D21790028C5CE /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		618C36A1282D81DC00A96935 /* SensorDataValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataValue.swift; sourceTree = "<group>"; };
 		61FBF641283D04420028C5CE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		61FBF643283D0FE90028C5CE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		61FBF645283D21790028C5CE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				617EC76D282AEDC700D8B4F6 /* HomeView.swift */,
 				61FBF641283D04420028C5CE /* SettingsView.swift */,
 				61FBF643283D0FE90028C5CE /* DetailsView.swift */,
+				61FBF645283D21790028C5CE /* MenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				617EC772282AF86500D8B4F6 /* ApiViewModel.swift in Sources */,
+				61FBF646283D21790028C5CE /* MenuView.swift in Sources */,
 				617EC777282AFA0C00D8B4F6 /* Sensor.swift in Sources */,
 				617EC761282AECFA00D8B4F6 /* Persistence.swift in Sources */,
 				617EC75A282AECF900D8B4F6 /* ContentView.swift in Sources */,

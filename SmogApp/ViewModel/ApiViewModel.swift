@@ -13,9 +13,9 @@ class ApiViewModel: ObservableObject {
     @Published var results: [SensorSort] = []
     @StateObject var locationManager = LocationManager()
     
-    func fetch(coordinates: CLLocation) async{
+    func fetch(coordinates: CLLocation, distance: Int) async{
         let coordinate = "\(coordinates.coordinate.latitude),\(coordinates.coordinate.longitude)"
-        guard let url = URL(string: "https://data.sensor.community/airrohr/v1/filter/area="+coordinate+",2&type=SDS011,PMS7003,HPM,PPD42NS,PMS1003,PMS3003,PMS5003,PMS6003") else {
+        guard let url = URL(string: "https://data.sensor.community/airrohr/v1/filter/area="+coordinate+","+String(distance)+"&type=SDS011,PMS7003,HPM,PPD42NS,PMS1003,PMS3003,PMS5003,PMS6003") else {
             print("Invalid URL")
             return
         }

@@ -18,6 +18,9 @@ struct DetailsView: View {
                         cardPM(item: sensor.sensordatavalues.P2, text: "PM 2.5")
                         cardPM(item: sensor.sensordatavalues.P1, text: "PM 10")
                     }
+                Text(isIndoor(item:sensor.location))
+                Text("na wysokości"  + sensor.location.altitude + "m")
+            
             }.padding(20).background(Color.gray.opacity(0.3))
         }.frame(maxWidth: .infinity, alignment: .center).shadow(color: Color.gray, radius: 20, x: 10, y: 10)
        
@@ -27,6 +30,14 @@ struct DetailsView: View {
     func getAddres(item: Address?) -> String{
         return "\(item?.street ?? "") \(item?.number ?? "") , \(item?.city ?? "")"
     }
+    
+    func isIndoor(item: Coordinates) ->String{
+        if(item.indoor == 1){
+            return "Czujnik jest położony w środku"
+        }
+        return "Czujnik jest położony na zewnątrz"
+    }
+    
     @ViewBuilder
     func cardPM(item: [Double], text: String) -> some View {
         let avgResult = avg(item: item)
@@ -63,5 +74,3 @@ struct DetailsView_Previews: PreviewProvider {
         
     }
 }
-
-
