@@ -18,6 +18,8 @@
 		617EC772282AF86500D8B4F6 /* ApiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC771282AF86500D8B4F6 /* ApiViewModel.swift */; };
 		617EC777282AFA0C00D8B4F6 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EC776282AFA0C00D8B4F6 /* Sensor.swift */; };
 		618C36A2282D81DC00A96935 /* SensorDataValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C36A1282D81DC00A96935 /* SensorDataValue.swift */; };
+		61FBF642283D04420028C5CE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBF641283D04420028C5CE /* SettingsView.swift */; };
+		61FBF644283D0FE90028C5CE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FBF643283D0FE90028C5CE /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		617EC771282AF86500D8B4F6 /* ApiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewModel.swift; sourceTree = "<group>"; };
 		617EC776282AFA0C00D8B4F6 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		618C36A1282D81DC00A96935 /* SensorDataValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataValue.swift; sourceTree = "<group>"; };
+		61FBF641283D04420028C5CE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		61FBF643283D0FE90028C5CE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 			children = (
 				617EC759282AECF900D8B4F6 /* ContentView.swift */,
 				617EC76D282AEDC700D8B4F6 /* HomeView.swift */,
+				61FBF641283D04420028C5CE /* SettingsView.swift */,
+				61FBF643283D0FE90028C5CE /* DetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +195,8 @@
 				617EC761282AECFA00D8B4F6 /* Persistence.swift in Sources */,
 				617EC75A282AECF900D8B4F6 /* ContentView.swift in Sources */,
 				617EC76B282AED3500D8B4F6 /* LocationManager.swift in Sources */,
+				61FBF642283D04420028C5CE /* SettingsView.swift in Sources */,
+				61FBF644283D0FE90028C5CE /* DetailsView.swift in Sources */,
 				618C36A2282D81DC00A96935 /* SensorDataValue.swift in Sources */,
 				617EC76E282AEDC700D8B4F6 /* HomeView.swift in Sources */,
 				617EC758282AECF900D8B4F6 /* SmogAppApp.swift in Sources */,

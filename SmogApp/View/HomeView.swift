@@ -19,16 +19,18 @@ struct HomeView: View {
     var userLongitude: String {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
-    let backgroundGradient = Color.green
     var body: some View {
         NavigationView {
             Form {
                 List(vm.results.sorted()){ item in
-                    NavigationLink(destination: ContentView()){
+                    NavigationLink(destination: DetailsView(sensor: item)){
                         HStack{
                             cardPM(item: item.sensordatavalues.P2, text: "PM 2.5")
-                            Text(item.address)
-                        }
+                            Text(getAddres(item: item.address))
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                       
+                        Text("\(item.distance) metrów").font(.system(size: 12)).padding(2).frame(maxHeight: .infinity, alignment: .bottom)
+                         
                     }
                 }
                 if(vm.results.count == 0){
@@ -39,6 +41,10 @@ struct HomeView: View {
             let coordinates = CLLocation(latitude: Double(userLatitude) ?? 0.0, longitude: Double(userLongitude) ?? 0.0)
             await vm.fetch(coordinates: coordinates)
         }
+    }
+    
+    func getAddres(item: Address?) -> String{
+        return "\(item?.street ?? "") \(item?.city ?? "")"
     }
     @ViewBuilder
     func cardPM(item: [Double], text: String) -> some View {

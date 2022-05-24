@@ -15,7 +15,7 @@ class ApiViewModel: ObservableObject {
     
     func fetch(coordinates: CLLocation) async{
         let coordinate = "\(coordinates.coordinate.latitude),\(coordinates.coordinate.longitude)"
-        guard let url = URL(string: "https://data.sensor.community/airrohr/v1/filter/area="+coordinate+",5&type=SDS011,PMS7003,HPM,PPD42NS,PMS1003,PMS3003,PMS5003,PMS6003") else {
+        guard let url = URL(string: "https://data.sensor.community/airrohr/v1/filter/area="+coordinate+",2&type=SDS011,PMS7003,HPM,PPD42NS,PMS1003,PMS3003,PMS5003,PMS6003") else {
             print("Invalid URL")
             return
         }
@@ -67,19 +67,19 @@ class ApiViewModel: ObservableObject {
         self.results.append(object)
     }
     
-    func getAddress(_ coordinates: Coordinates) async -> String {
-        var address:String = ""
+    func getAddress(_ coordinates: Coordinates) async -> Address? {
         do {
             let geoCoder = CLGeocoder()
             let location = CLLocation.init(latitude: Double(coordinates.latitude) ?? 0, longitude: Double(coordinates.longitude) ?? 0)
             let placemarks = try await geoCoder.reverseGeocodeLocation(location)
-            address = "\(placemarks.first?.thoroughfare ?? "") \(placemarks.first?.locality ?? "")"
-            // \(placemarks.first?.subThoroughfare ?? ""),
+            let address = Address(city: placemarks.first?.locality ?? "", number: placemarks.first?.subThoroughfare ?? "", street: placemarks.first?.thoroughfare ?? "")
+            return address
+            // \(),
             //, \(placemarks.first?.administrativeArea ?? "")
         } catch {
             print("Errror")
             print(String(describing: error)) // <- ✅ Use this for debuging!
         }
-        return address
+        return nil
     }
 }

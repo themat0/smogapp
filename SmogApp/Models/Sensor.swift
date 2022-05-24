@@ -27,7 +27,7 @@ struct SensorSort: Codable, Identifiable, Comparable {
     //let sensorID: Int32
     let id = UUID()
     let location: Coordinates
-    let address: String
+    let address: Address?
     let distance: Int
     var sensordatavalues: SensorData
 }
@@ -38,4 +38,10 @@ struct Coordinates: Codable {
     let longitude: String
     let id: Int
     let indoor: Int
+}
+
+struct Address: Codable {
+    let city: String
+    let number: String
+    let street: String
 }
