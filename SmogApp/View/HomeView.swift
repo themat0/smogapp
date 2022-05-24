@@ -19,39 +19,53 @@ struct HomeView: View {
     var userLongitude: String {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
-    
+    let backgroundGradient = Color.green
     var body: some View {
-        VStack {
-            Text("location status: \(locationManager.statusString)")
-            HStack {
-                Text("latitude: \(userLatitude)")
-                Text("longitude: \(userLongitude)")
-            }
-            List(vm.results){ item in
-                Group{
-                    HStack{
-                        VStack {
-                            Text("PM2.5: \(avg(item: item.sensordatavalues.P2))")
-                            Text("PM10: \(avg(item: item.sensordatavalues.P1))")
+        NavigationView {
+            Form {
+                List(vm.results.sorted()){ item in
+                    NavigationLink(destination: ContentView()){
+                        HStack{
+                            cardPM(item: item.sensordatavalues.P2, text: "PM 2.5")
+                            Text(item.address)
                         }
-                        Text(item.address)
                     }
                 }
-            }
+                if(vm.results.count == 0){
+                    Text("Lista jest pusta")
+                }
+            }.navigationBarTitle("Smog App", displayMode: .automatic)
         }.task {
-            let coordinates = "\(userLatitude),\(userLongitude)"
+            let coordinates = CLLocation(latitude: Double(userLatitude) ?? 0.0, longitude: Double(userLongitude) ?? 0.0)
             await vm.fetch(coordinates: coordinates)
-            print(vm.results)
         }
     }
-    
-    func avg(item:[Double]) -> String{
+    @ViewBuilder
+    func cardPM(item: [Double], text: String) -> some View {
+        let avgResult = avg(item: item)
+        let color: Color = colorCard(avg: avgResult)
+        
+        VStack {
+            Text(String(avgResult))
+            Text(text)
+        }.padding(10)
+            .background(color)
+            .cornerRadius(10)
+    }
+    func colorCard(avg: Double) -> Color{
+        if(avg>20){
+            return Color.red
+        } else {
+            return Color.green
+        }
+    }
+    func avg(item:[Double]) -> Double{
         var sum = 0.0
         for i in item{
             sum += i
         }
         let result = sum / Double(item.count)
-        return String(Double(round(100 * result) / 100))
+        return Double(round(100 * result) / 100)
     }
 }
 struct HomeView_Previews: PreviewProvider {
