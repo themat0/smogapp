@@ -13,17 +13,17 @@ struct DetailsView: View {
     var body: some View {
         VStack{
             VStack{
-            Text(getAddres(item: sensor.address))
-                    HStack{
-                        cardPM(item: sensor.sensordatavalues.P2, text: "PM 2.5")
-                        cardPM(item: sensor.sensordatavalues.P1, text: "PM 10")
-                    }
+                Text(getAddres(item: sensor.address))
+                HStack{
+                    cardPM(item: sensor.sensordatavalues.P2, text: "PM 2.5")
+                    cardPM(item: sensor.sensordatavalues.P1, text: "PM 10")
+                }
                 Text(isIndoor(item:sensor.location))
                 Text("na wysokości"  + sensor.location.altitude + "m")
-            
+                
             }.padding(20).background(Color.gray.opacity(0.3))
         }.frame(maxWidth: .infinity, alignment: .center).shadow(color: Color.gray, radius: 20, x: 10, y: 10)
-       
+        
         //Text("\(sensor.distance) metrów").font(.system(size: 12)).padding(2).frame(maxHeight: .infinity, alignment: .bottom)
     }
     
@@ -37,11 +37,18 @@ struct DetailsView: View {
         }
         return "Czujnik jest położony na zewnątrz"
     }
-    
+    func colorCard(avgResult: Double, text: String) -> Color {
+        if(text == "PM 10"){
+            return colorCardPM10(avg: avgResult)
+        } else {
+            return colorCardPM25(avg: avgResult)
+        }
+    }
     @ViewBuilder
     func cardPM(item: [Double], text: String) -> some View {
         let avgResult = avg(item: item)
-        let color: Color = colorCard(avg: avgResult)
+        let color: Color = colorCard(avgResult: avgResult, text: text)
+        
         
         VStack {
             Text(String(avgResult))
@@ -50,11 +57,50 @@ struct DetailsView: View {
             .background(color)
             .cornerRadius(10)
     }
-    func colorCard(avg: Double) -> Color{
-        if(avg>20){
-            return Color.red
+    func colorCardPM10(avg: Double) -> Color{
+        if(avg<=20){
+            return Color(0.0, 153.0, 0.0)
         } else {
-            return Color.green
+            if(avg <= 50){
+                return Color(176, 221, 16)
+            } else {
+                if(avg <= 80){
+                    return Color(255, 217, 15)
+                } else {
+                    if( avg <= 110){
+                        return Color(255, 217, 15)
+                    } else {
+                        if( avg <= 150){
+                            return Color(229, 1, 1)
+                        } else {
+                            return Color(154, 1, 1)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    func colorCardPM25(avg: Double) -> Color{
+        if(avg<=13){
+            return Color(0.0, 153.0, 0.0)
+        } else {
+            if(avg <= 35){
+                return Color(176, 221, 16)
+            } else {
+                if(avg <= 55){
+                    return Color(255, 217, 15)
+                } else {
+                    if( avg <= 75){
+                        return Color(255, 217, 15)
+                    } else {
+                        if( avg <= 110){
+                            return Color(229, 1, 1)
+                        } else {
+                            return Color(154, 1, 1)
+                        }
+                    }
+                }
+            }
         }
     }
     func avg(item:[Double]) -> Double{

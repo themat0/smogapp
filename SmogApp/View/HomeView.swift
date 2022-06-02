@@ -53,7 +53,7 @@ struct HomeView: View {
     @ViewBuilder
     func cardPM(item: [Double], text: String) -> some View {
         let avgResult = avg(item: item)
-        let color: Color = colorCard(avg: avgResult)
+        let color: Color = colorCardPM25(avg: avgResult)
         
         VStack {
             Text(String(avgResult))
@@ -62,11 +62,27 @@ struct HomeView: View {
             .background(color)
             .cornerRadius(10)
     }
-    func colorCard(avg: Double) -> Color{
-        if(avg>20){
-            return Color.red
+    func colorCardPM25(avg: Double) -> Color{
+        if(avg<=13){
+            return Color(0.0, 153.0, 0.0)
         } else {
-            return Color.green
+            if(avg <= 35){
+                return Color(176, 221, 16)
+            } else {
+                if(avg <= 55){
+                    return Color(255, 217, 15)
+                } else {
+                    if( avg <= 75){
+                        return Color(255, 217, 15)
+                    } else {
+                        if( avg <= 110){
+                            return Color(229, 1, 1)
+                        } else {
+                            return Color(154, 1, 1)
+                        }
+                    }
+                }
+            }
         }
     }
     func avg(item:[Double]) -> Double{
@@ -82,5 +98,10 @@ struct HomeView_Previews: PreviewProvider {
     static let disctance = 0
     static var previews: some View {
         HomeView(distance: disctance)
+    }
+}
+extension Color {
+    init(_ r: Double,_ g: Double,_ b: Double) {
+        self.init(red: r/255, green: g/255, blue: b/255)
     }
 }
